@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SENAI - Página Inicial</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    background-color: #4a148c;
+    color: white;
+}
+.menu {
+    background-color: #5025e7;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    color: #adff00;
+    font-size: 24px;
+    text-decoration: none;
+    border: 2px solid #adff00;
+    border-radius: 20px;
+    padding: 8px 20px;
+}
+.links {
+    display: flex;
+    padding: 10px;
+}
+.links a {
+    color: #adff00;
+    text-decoration: none;
+    border: 2px solid #adff00;
+    border-radius: 25px;
+    padding: 8px 12px;
+    margin-left: 5px;
+}
+.links a:hover, .botao:hover {
+    background-color: #adff00;
+    color: #5025e7;
+}
+.secao {
+    min-height: 80vh;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.inicio {
+    background-image: url("fundo.jpg");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+.titulo {
+    color: #adff00;
+    background-color: #5025e7;
+    border: 2px solid #adff00;
+    border-radius: 12px;
+    padding: 12px 25px;
+    margin-bottom: 25px;
+}
+.caixa {
+    background-color: #5b2094;
+    border: 2px solid #adff00;
+    border-radius: 15px;
+    padding: 25px;
+    width: 100%;
+    max-width: 800px;
+}
+.caixa h2 {
+    color: #adff00;
+    margin-bottom: 15px;
+}
+.caixa p {
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+.botao {
+    display: inline-block;
+    color: #adff00;
+    text-decoration: none;
+    border: 2px solid #adff00;
+    border-radius: 20px;
+    padding: 10px 15px;
+    margin-top: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+.tabela th {
+    background-color: #adff00;
+    color: #4a148c;
+}
+.tabela th, .tabela td {
+    padding: 12px;
+    border: 1px solid #adff00;
+}
+.unidades, .contatos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.unidades .caixa, .contatos .caixa {
+    flex: 1;
+    min-width: 260px;
+    max-width: 400px;
+    margin: 10px;
+}
+.formulario, .campo {
+    display: flex;
+    flex-direction: column;
+}
+.campo input, .campo select, .campo textarea {
+    padding: 10px;
+    border: 1px solid #adff00;
+    border-radius: 5px;
+}
+.campo textarea {
+    resize: vertical;
+}
+.foto {
+    width: 550px;
+    height: auto;
+    display: block;
+    margin: 20px auto 0;
+    border-radius: 10px;
+    animation: girar 5s linear infinite;
+}
+.centro {
+    background-color: #5b2094;
+    border: 2px solid #adff00;
+    border-radius: 15px;
+    padding: 40px;
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    text-align: center;
+}
+.centro h1 {
+    color: #adff00;
+    margin-bottom: 20px;
+}
+.centro a {
+    color: #adff00;
+    text-decoration: none;
+}
+.caixa-download {
+    margin-top: 20px;
+}
+.video {
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+}
+.video p {
+    color: #adff00;
+    margin-bottom: 15px;
+}
+.video video {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #adff00;
+    border-radius: 10px;
+}
+.rodape {
+    background-color: #321064;
+    border-top: 3px solid #adff00;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.rodape div {
+    min-width: 220px;
+    margin: 10px;
+}
+.rodape p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+.rodape p:first-child {
+    color: #adff00;
+    font-size: 18px;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+<header class="menu">
+    <a href="#inicio" class="logo">SESI</a>
+    <nav class="links">
+        <a href="#cursos">CURSOS</a>
+        <a href="#unidades">UNIDADES</a>
+        <a href="#contato">FALE CONOSCO</a>
+        <a href="#transparencia">TRANSPARÊNCIA</a>
+    </nav>
+</header>
+<section id="inicio" class="secao inicio">
+    <h1 class="titulo">BEM-VINDO!</h1>
+    <div class="caixa">
+        <h2>Conheça nossos cursos</h2>
+        <p>O SENAI oferece cursos para quem quer aprender, desenvolver novas habilidades e se preparar para o trabalho.</p>
+        <a href="#cursos" class="botao">Ver cursos</a>
+    </div>
+</section>
+<section id="cursos" class="secao">
+    <h1 class="titulo">CURSOS</h1>
+    <div class="caixa">
+        <table class="tabela">
+            <tr><th>Curso</th><th>Modalidade</th><th>Inscrições</th></tr>
+            <tr><td>Desenvolvimento de Sistemas</td><td>Online</td><td>Dezembro a janeiro</td></tr>
+            <tr><td>Análise de Dados</td><td>Presencial</td><td>Dezembro a janeiro</td></tr>
+            <tr><td>Git e GitHub</td><td>Online</td><td>Dezembro a janeiro</td></tr>
+            <tr><td>Mecatrônica</td><td>Presencial</td><td>Dezembro a janeiro</td></tr>
+        </table>
+    </div>
+</section>
+<section id="unidades" class="secao">
+    <h1 class="titulo">UNIDADES</h1>
+    <div class="unidades">
+        <div class="caixa">
+            <h2>Unidade Barra Funda</h2>
+            <p>Conheça a unidade e as opções de cursos disponíveis.</p>
+            <p>Consulte os horários de atendimento.</p>
+            <a href="#contato" class="botao">Mais informações</a>
+        </div>
+        <div class="caixa">
+            <h2>Atendimento ao aluno</h2>
+            <p>Precisa de ajuda?</p>
+            <p>Entre em contato com a equipe de atendimento.</p>
+            <a href="#contato" class="botao">Fale conosco</a>
+        </div>
+    </div>
+</section>
+<section id="contato" class="secao">
+    <h1 class="titulo">FALE CONOSCO</h1>
+    <div class="contatos">
+        <div class="caixa">
+            <h2>Envie sua mensagem</h2>
+            <p>Preencha os campos abaixo para deixar sua dúvida.</p>
+            <form class="formulario" action="#" method="post">
+                <div class="campo">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome">
+                </div>
+                <div class="campo">
+                    <label for="assunto">Assunto</label>
+                    <select id="assunto" name="assunto">
+                        <option>Dúvidas sobre cursos</option>
+                        <option>Inscrições</option>
+                        <option>Atendimento</option>
+                        <option>Outros</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua dúvida"></textarea>
+                </div>
+                <button type="submit" class="botao">Enviar</button>
+            </form>
+        </div>
+        <div class="caixa">
+            <h2>Atendimento urgente</h2>
+            <p>Entre em contato com a equipe.</p>
+            <p>Telefone: (11) 4000-5678</p>
+            <a href="tel:1140005678" class="botao">Ligar</a>
+        </div>
+    </div>
+</section>
+<section id="transparencia" class="secao">
+    <div class="caixa">
+        <h2>Transparência</h2>
+        <p>Nesta página, reunimos informações sobre os cursos, os projetos e as atividades do SENAI.</p>
+        <p>A ideia é deixar essas informações claras e fáceis de encontrar para os alunos e para a comunidade.</p>
+        <img src="escola-senai-fachada.jpg" alt="Logo do SENAI" class="foto">
+    </div>
+</section>
+<section class="centro">
+    <h1>Exemplo de Abertura de Arquivo no Navegador</h1>
+    <p><a href="assets/imagem.jpg" target="_blank" download>Ir para o arquivo</a></p>
+    <div class="caixa-download">
+        <a href="assets/imagem.jpg" download="Arquivo_Baixado.jpg">Baixar arquivo</a>
+    </div>
+</section>
+<section class="video">
+    <p>Sobre nossos cursos:</p>
+    <video src="assets/teste.mp4" controls loop width="850" height="500"></video>
+</section>
+<footer class="rodape">
+    <div>
+        <p>Contato</p>
+        <p>Telefone: (11) 4000-1234</p>
+        <p>Email: contato@senai.com.br</p>
+    </div>
+    <div>
+        <p>Projeto escolar sobre o SENAI</p>
+        <p>Desenvolvido em 2026</p>
+    </div>
+</footer>
+</body>
+</html>
