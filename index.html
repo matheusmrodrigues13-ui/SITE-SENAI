@@ -12,40 +12,87 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
+html {
+    scroll-behavior: smooth;
+}
 body {
-    background-color: #4a148c;
-    color: white;
+    background: linear-gradient(135deg, #050505 0%, #1a1a1a 35%, #0f172a 100%);
+    color: #e5e7eb;
+    overflow-x: hidden;
+    position: relative;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(34,211,238,0.15), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(15,23,42,0.45), transparent 35%);
+    pointer-events: none;
+    z-index: 0;
+}
+.menu, .secao, .centro, .video, .rodape {
+    position: relative;
+    z-index: 1;
 }
 .menu {
-    background-color: #5025e7;
-    padding: 10px 20px;
+    background: rgba(10, 14, 24, 0.9);
+    backdrop-filter: blur(8px);
+    padding: 12px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 8px 25px rgba(34,211,238,0.18);
 }
 .logo {
-    color: #adff00;
+    color: #67e8f9;
     font-size: 24px;
     text-decoration: none;
-    border: 2px solid #adff00;
+    border: 2px solid #67e8f9;
     border-radius: 20px;
     padding: 8px 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pulse 2s infinite;
+}
+.logo:hover {
+    transform: scale(1.08) rotate(-2deg);
+    box-shadow: 0 0 18px rgba(103,232,249,0.8);
 }
 .links {
     display: flex;
     padding: 10px;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 .links a {
-    color: #adff00;
+    color: #67e8f9;
     text-decoration: none;
-    border: 2px solid #adff00;
+    border: 2px solid #67e8f9;
     border-radius: 25px;
     padding: 8px 12px;
-    margin-left: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
+.links a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+    transform: translateX(-120%);
+    transition: transform 0.5s ease;
+}
+.links a:hover::before, .links a.ativo::before {
+    transform: translateX(120%);
+}
+.links a.ativo,
 .links a:hover, .botao:hover {
-    background-color: #adff00;
-    color: #5025e7;
+    background-color: #67e8f9;
+    color: #050505;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 18px rgba(103,232,249,0.4);
 }
 .secao {
     min-height: 80vh;
@@ -56,30 +103,39 @@ body {
     justify-content: center;
 }
 .inicio {
-    background-image: url("fundo.jpg");
+    background-image: linear-gradient(rgba(33, 12, 52, 0.6), rgba(33, 12, 52, 0.6)), url("fundo.jpg");
     background-size: cover;
     background-position: center;
     text-align: center;
 }
 .titulo {
-    color: #adff00;
-    background-color: #5025e7;
-    border: 2px solid #adff00;
+    color: #67e8f9;
+    background: rgba(15, 23, 42, 0.85);
+    border: 2px solid #67e8f9;
     border-radius: 12px;
     padding: 12px 25px;
     margin-bottom: 25px;
+    animation: floatTitle 3s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(103,232,249,0.2);
 }
 .caixa {
-    background-color: #5b2094;
-    border: 2px solid #adff00;
+    background: linear-gradient(145deg, rgba(17, 24, 39, 0.96), rgba(15, 23, 42, 0.9));
+    border: 2px solid #67e8f9;
     border-radius: 15px;
     padding: 25px;
     width: 100%;
     max-width: 800px;
+    box-shadow: 0 15px 30px rgba(103,232,249,0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.caixa:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.35);
 }
 .caixa h2 {
-    color: #adff00;
+    color: #67e8f9;
     margin-bottom: 15px;
+    animation: textGlow 2s ease-in-out infinite alternate;
 }
 .caixa p {
     line-height: 1.6;
@@ -87,27 +143,38 @@ body {
 }
 .botao {
     display: inline-block;
-    color: #adff00;
+    color: #67e8f9;
     text-decoration: none;
-    border: 2px solid #adff00;
+    border: 2px solid #67e8f9;
     border-radius: 20px;
     padding: 10px 15px;
     margin-top: 10px;
     background-color: transparent;
     cursor: pointer;
+    transition: all 0.3s ease;
+    animation: pulse 2.5s infinite;
 }
 .tabela {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.tabela tr {
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+.tabela tr:hover {
+    background: rgba(103,232,249,0.08);
+    transform: scale(1.01);
 }
 .tabela th {
-    background-color: #adff00;
-    color: #4a148c;
+    background: linear-gradient(90deg, #67e8f9, #a5f3fc);
+    color: #050505;
 }
 .tabela th, .tabela td {
     padding: 12px;
-    border: 1px solid #adff00;
+    border: 1px solid #67e8f9;
 }
 .unidades, .contatos {
     display: flex;
@@ -127,36 +194,49 @@ body {
 }
 .campo input, .campo select, .campo textarea {
     padding: 10px;
-    border: 1px solid #adff00;
+    border: 1px solid #67e8f9;
     border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    background: rgba(15,23,42,0.7);
+    color: white;
+}
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+    outline: none;
+    border-color: #a5f3fc;
+    box-shadow: 0 0 12px rgba(103,232,249,0.5);
+    transform: scale(1.01);
 }
 .campo textarea {
     resize: vertical;
 }
 .foto {
     width: 550px;
+    max-width: 100%;
     height: auto;
     display: block;
     margin: 20px auto 0;
     border-radius: 10px;
-    animation: girar 5s linear infinite;
+    animation: girar 8s linear infinite, floatImage 3s ease-in-out infinite;
+    box-shadow: 0 0 25px rgba(103,232,249,0.25);
 }
 .centro {
-    background-color: #5b2094;
-    border: 2px solid #adff00;
+    background: linear-gradient(135deg, rgba(17, 24, 39, 0.96), rgba(15, 23, 42, 0.9));
+    border: 2px solid #67e8f9;
     border-radius: 15px;
     padding: 40px;
     width: 90%;
     max-width: 800px;
     margin: 30px auto;
     text-align: center;
+    animation: fadeUp 1s ease-out;
 }
 .centro h1 {
-    color: #adff00;
+    color: #67e8f9;
     margin-bottom: 20px;
+    animation: pulse 2.5s infinite;
 }
 .centro a {
-    color: #adff00;
+    color: #67e8f9;
     text-decoration: none;
 }
 .caixa-download {
@@ -174,12 +254,17 @@ body {
 .video video {
     max-width: 100%;
     height: auto;
-    border: 2px solid #adff00;
+    border: 2px solid #67e8f9;
     border-radius: 10px;
+    box-shadow: 0 18px 40px rgba(103,232,249,0.16);
+    transition: transform 0.3s ease;
+}
+.video video:hover {
+    transform: scale(1.02);
 }
 .rodape {
-    background-color: #321064;
-    border-top: 3px solid #adff00;
+    background: linear-gradient(180deg, #0b1220, #020817);
+    border-top: 3px solid #67e8f9;
     padding: 30px;
     display: flex;
     justify-content: space-between;
@@ -189,15 +274,82 @@ body {
 .rodape div {
     min-width: 220px;
     margin: 10px;
+    animation: fadeUp 1s ease-out;
 }
 .rodape p {
     margin: 8px 0;
     line-height: 1.5;
 }
 .rodape p:first-child {
-    color: #adff00;
+    color: #67e8f9;
     font-size: 18px;
     font-weight: bold;
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.mensagem-status {
+    margin-top: 15px;
+    color: #67e8f9;
+    font-weight: bold;
+    animation: pulse 1.2s ease-in-out;
+}
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+@keyframes floatTitle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+@keyframes textGlow {
+    from { text-shadow: 0 0 8px rgba(173,255,0,0.4); }
+    to { text-shadow: 0 0 18px rgba(173,255,0,0.9); }
+}
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes floatImage {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+@keyframes girar {
+    0% { transform: rotateY(0deg); }
+    50% { transform: rotateY(180deg); }
+    100% { transform: rotateY(360deg); }
+}
+@media (max-width: 700px) {
+    .menu {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .links {
+        justify-content: center;
+    }
+    .titulo {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+    .secao {
+        padding: 40px 15px;
+    }
+    .rodape {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 </style>
 </head>
@@ -211,17 +363,17 @@ body {
         <a href="#transparencia">TRANSPARÊNCIA</a>
     </nav>
 </header>
-<section id="inicio" class="secao inicio">
+<section id="inicio" class="secao inicio reveal">
     <h1 class="titulo">BEM-VINDO!</h1>
-    <div class="caixa">
+    <div class="caixa reveal">
         <h2>Conheça nossos cursos</h2>
         <p>O SENAI oferece cursos para quem quer aprender, desenvolver novas habilidades e se preparar para o trabalho.</p>
         <a href="#cursos" class="botao">Ver cursos</a>
     </div>
 </section>
-<section id="cursos" class="secao">
+<section id="cursos" class="secao reveal">
     <h1 class="titulo">CURSOS</h1>
-    <div class="caixa">
+    <div class="caixa reveal">
         <table class="tabela">
             <tr><th>Curso</th><th>Modalidade</th><th>Inscrições</th></tr>
             <tr><td>Desenvolvimento de Sistemas</td><td>Online</td><td>Dezembro a janeiro</td></tr>
@@ -231,16 +383,16 @@ body {
         </table>
     </div>
 </section>
-<section id="unidades" class="secao">
+<section id="unidades" class="secao reveal">
     <h1 class="titulo">UNIDADES</h1>
     <div class="unidades">
-        <div class="caixa">
+        <div class="caixa reveal">
             <h2>Unidade Barra Funda</h2>
             <p>Conheça a unidade e as opções de cursos disponíveis.</p>
             <p>Consulte os horários de atendimento.</p>
             <a href="#contato" class="botao">Mais informações</a>
         </div>
-        <div class="caixa">
+        <div class="caixa reveal">
             <h2>Atendimento ao aluno</h2>
             <p>Precisa de ajuda?</p>
             <p>Entre em contato com a equipe de atendimento.</p>
@@ -248,10 +400,10 @@ body {
         </div>
     </div>
 </section>
-<section id="contato" class="secao">
+<section id="contato" class="secao reveal">
     <h1 class="titulo">FALE CONOSCO</h1>
     <div class="contatos">
-        <div class="caixa">
+        <div class="caixa reveal">
             <h2>Envie sua mensagem</h2>
             <p>Preencha os campos abaixo para deixar sua dúvida.</p>
             <form class="formulario" action="#" method="post">
@@ -275,7 +427,7 @@ body {
                 <button type="submit" class="botao">Enviar</button>
             </form>
         </div>
-        <div class="caixa">
+        <div class="caixa reveal">
             <h2>Atendimento urgente</h2>
             <p>Entre em contato com a equipe.</p>
             <p>Telefone: (11) 4000-5678</p>
@@ -283,26 +435,26 @@ body {
         </div>
     </div>
 </section>
-<section id="transparencia" class="secao">
-    <div class="caixa">
+<section id="transparencia" class="secao reveal">
+    <div class="caixa reveal">
         <h2>Transparência</h2>
         <p>Nesta página, reunimos informações sobre os cursos, os projetos e as atividades do SENAI.</p>
         <p>A ideia é deixar essas informações claras e fáceis de encontrar para os alunos e para a comunidade.</p>
         <img src="escola-senai-fachada.jpg" alt="Logo do SENAI" class="foto">
     </div>
 </section>
-<section class="centro">
+<section class="centro reveal">
     <h1>Exemplo de Abertura de Arquivo no Navegador</h1>
     <p><a href="assets/imagem.jpg" target="_blank" download>Ir para o arquivo</a></p>
     <div class="caixa-download">
         <a href="assets/imagem.jpg" download="Arquivo_Baixado.jpg">Baixar arquivo</a>
     </div>
 </section>
-<section class="video">
+<section class="video reveal">
     <p>Sobre nossos cursos:</p>
     <video src="assets/teste.mp4" controls loop width="850" height="500"></video>
 </section>
-<footer class="rodape">
+<footer class="rodape reveal">
     <div>
         <p>Contato</p>
         <p>Telefone: (11) 4000-1234</p>
@@ -310,8 +462,9 @@ body {
     </div>
     <div>
         <p>Projeto escolar sobre o SENAI</p>
-        <p>Desenvolvido em 2026</p>
+        <p>Desenvolvido em <span id="ano-atual">2026</span></p>
     </div>
 </footer>
+<script src="script.js"></script>
 </body>
 </html>
